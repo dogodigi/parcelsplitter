@@ -1,0 +1,29 @@
+{
+  "name": "parcelsplitter",
+  "description": "Parcelsplitter",
+  "version": "0.0.1",
+  "license": "GPL-3.0+",
+  "author": {
+    "name": "Milo van der Linden",
+    "email": "milo@dogodigi.net",
+    "url": "http://www.dogodigi.net/"
+  },
+  "private": true,
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/dogodigi/parcelsplitter.git"
+  },
+  "dependencies": {
+    "body-parser": "^1.10.2",
+    "clean-css": "*",
+    "express": "~4.9.0",
+    "express-session": "^1.10.1",
+    "i18next": "^1.7.8",
+    "jade": "~1.6.0",
+    "nconf": "^0.7.1",
+    "serve-favicon": "^2.2.0"
+  }
+}
