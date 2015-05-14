@@ -2,7 +2,9 @@
 
 ## Tasks and issues
 
-https://tree.taiga.io/project/parcelsplitter/
+Parcelsplitter has a [taiga](http://taiga.io) project set up to develop using use cases, track issues and to bundle team communication.
+
+[taiga.io - parcelsplitter](https://tree.taiga.io/project/parcelsplitter/)
 
 ## Installation
 
