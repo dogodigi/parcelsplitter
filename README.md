@@ -14,12 +14,16 @@ npm install
 
 ## Run
 
-To run the application in development mode:
+To start the applicatie in "development mode":
+
+```sh
+    node index.js
+```
+
+    or
 
 ```sh
 npm start
 ```
 
-Then go to http://localhost:3000
-
-
+Point your browser to [http://localhost:3000](http://localhost:3000) to check if the application is running.
