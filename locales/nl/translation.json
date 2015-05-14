@@ -1,1 +1,7 @@
-{}
+{
+    "L":{
+        "mapdata": "Kaartgegevens",
+        "contributors": "deelnemers",
+        "imagery": "Luchtfoto"
+    }
+}

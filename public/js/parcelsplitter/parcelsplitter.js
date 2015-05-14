@@ -1,4 +1,4 @@
-/* global L */
+/* global L, i18n, psLang */
 
 /**
  *  Copyright (c) 2014 Milo van der Linden (milo@dogodigi.net)
@@ -20,51 +20,63 @@
  *
  */
 
-var mapbox = L.tileLayer('http://{s}.tiles.mapbox.com/v3/miblon.map-n72dremu/{z}/{x}/{y}.png', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 18
-});
-var map = L.map('map', {layers: [mapbox]}).setView([-25.299398189009363, -57.619957029819496], 13);
-var drawnItems = new L.FeatureGroup();
-map.addLayer(drawnItems);
 
-var drawControl = new L.Control.Draw({
-    draw: {
-        position: 'topleft',
-        polygon: {
-            title: 'Draw a sexy polygon!',
-            allowIntersection: false,
-            drawError: {
-                color: '#b00b00',
-                timeout: 1000
+function init() {
+    i18n.init({lng: psLang}, function (t) {
+        var mapbox = L.tileLayer('http://{s}.tiles.mapbox.com/v3/miblon.map-n72dremu/{z}/{x}/{y}.png', {
+            attribution: 
+                    i18n.t('L.mapdata') + 
+                    ' &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> ' +
+                    i18n.t('L.contributors')+ 
+                    ', <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' + 
+                    i18n.t('L.imagery') + ' &copy; <a href="http://mapbox.com">Mapbox</a>',
+            maxZoom: 18
+        });
+        var map = L.map('map', {layers: [mapbox]}).setView([-25.299398189009363, -57.619957029819496], 13);
+        var drawnItems = new L.FeatureGroup();
+        map.addLayer(drawnItems);
+
+        var drawControl = new L.Control.Draw({
+            draw: {
+                position: 'topleft',
+                polygon: {
+                    title: 'Draw a sexy polygon!',
+                    allowIntersection: false,
+                    drawError: {
+                        color: '#b00b00',
+                        timeout: 1000
+                    },
+                    shapeOptions: {
+                        color: '#bada55'
+                    },
+                    showArea: true
+                },
+                polyline: {
+                    metric: false
+                },
+                circle: {
+                    shapeOptions: {
+                        color: '#662d91'
+                    }
+                }
             },
-            shapeOptions: {
-                color: '#bada55'
-            },
-            showArea: true
-        },
-        polyline: {
-            metric: false
-        },
-        circle: {
-            shapeOptions: {
-                color: '#662d91'
+            edit: {
+                featureGroup: drawnItems
             }
-        }
-    },
-    edit: {
-        featureGroup: drawnItems
-    }
-});
-map.addControl(drawControl);
+        });
+        map.addControl(drawControl);
 
-map.on('draw:created', function (e) {
-    var type = e.layerType,
-            layer = e.layer;
+        map.on('draw:created', function (e) {
+            var type = e.layerType,
+                    layer = e.layer;
 
-    if (type === 'marker') {
-        layer.bindPopup('A popup!');
-    }
+            if (type === 'marker') {
+                layer.bindPopup('A popup!');
+            }
 
-    drawnItems.addLayer(layer);
-});
+            drawnItems.addLayer(layer);
+        });
+    });
+
+
+}
