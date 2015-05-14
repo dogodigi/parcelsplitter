@@ -36,13 +36,7 @@ function setup(app){
  */
 function index(req, res) {
     var activelang;
-    if (req.i18n.language() !== 'nl' && req.i18n.language() !== 'dev' && req.i18n.language() !== 'en') {
-        console.log(req.i18n.language());
-        req.i18n.setLng('dev');
-        activelang = 'dev';
-    } else {
-        activelang = req.i18n.language();
-    }
+    activelang = req.i18n.language();
     res.render('index', {mylang: activelang, mode: req.app.get('env')});
 }
 

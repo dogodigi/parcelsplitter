@@ -1,4 +1,7 @@
 {
+    "app": {
+        "title": "Divisor de paquetería"
+    },
     "L":{
         "mapdata": "Datos del mapa",
         "contributors": "contribuyentes",

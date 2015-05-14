@@ -1,5 +1,8 @@
 {
-    "L":{
+    "app": {
+        "title": "Parcel splitter"
+    },
+    "L": {
         "mapdata": "Map data",
         "contributors": "contributors",
         "imagery": "Imagery"

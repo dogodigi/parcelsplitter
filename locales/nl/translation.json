@@ -1,4 +1,7 @@
 {
+    "app": {
+        "title": "Perceelsplitser"
+    },
     "L":{
         "mapdata": "Kaartgegevens",
         "contributors": "deelnemers",
