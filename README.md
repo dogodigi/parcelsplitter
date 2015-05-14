@@ -17,10 +17,10 @@ npm install
 To start the applicatie in "development mode":
 
 ```sh
-    node index.js
+node index.js
 ```
 
-    or
+or
 
 ```sh
 npm start
