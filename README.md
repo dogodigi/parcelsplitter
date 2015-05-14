@@ -6,7 +6,7 @@ https://tree.taiga.io/project/parcelsplitter/
 
 ## Installation
 
-This application requires [node.js]
+This application requires [node.js](https://nodejs.org/download/)
 
 ```sh
 npm install
