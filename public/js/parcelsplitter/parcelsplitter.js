@@ -52,7 +52,7 @@ function init() {
                     showArea: true
                 },
                 polyline: {
-                    metric: false
+                    metric: true
                 },
                 circle: {
                     shapeOptions: {
