@@ -20,6 +20,6 @@ To run the application in development mode:
 npm start
 ```
 
-Then go to [http://localhost:3000]
+Then go to http://localhost:3000
 
 
