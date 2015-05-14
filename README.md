@@ -8,7 +8,14 @@ Parcelsplitter has a [taiga](http://taiga.io) project set up to develop using us
 
 ## Installation
 
-This application requires [node.js](https://nodejs.org/download/)
+This application requires [node.js](https://nodejs.org/download/). 
+Once node.js is installed, checkout this project.
+
+```sh
+git clone https://github.com/dogodigi/parcelsplitter.git
+cd parcelsplitter
+```
+Then install the required dependencies
 
 ```sh
 npm install
