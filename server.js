@@ -30,6 +30,7 @@ var express = require('express'),
 i18n.init({
     detectLngQS: 'l',
     saveMissing: true,
+    sendMissingTo : 'all',
     useCookie: false,
     debug: true,
     fallbackLng: 'dev'
