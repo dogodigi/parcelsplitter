@@ -7,6 +7,8 @@
         "contributors": "contributors",
         "imagery": "Imagery",
         "zoomInTitle": "Zoom in",
-        "zoomOutTitle": "Zoom out"
+        "zoomOutTitle": "Zoom out",
+        "mapboxmap": "Map",
+        "mapboxsat": "Imagery"
     }
 }

@@ -23,16 +23,29 @@
 
 function init() {
     i18n.init({lng: psLang, detectLngQS: 'l'}, function (t) {
-        var mapbox = L.tileLayer('http://{s}.tiles.mapbox.com/v3/miblon.map-n72dremu/{z}/{x}/{y}.png', {
+        var mapboxmap = L.tileLayer('http://{s}.tiles.mapbox.com/v3/miblon.map-n72dremu/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWlibG9uIiwiYSI6IjRJak9WYUkifQ.NOqcZh0hQeYTp6BQIZr0GQ', {
             attribution:
                     t('L.mapdata') +
                     ' &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> ' +
                     t('L.contributors') +
                     ', <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
                     t('L.imagery') + ' &copy; <a href="http://mapbox.com">Mapbox</a>',
-            maxZoom: 18
+            maxZoom: 21
         });
-        var map = L.map('map', {zoomControl: false, layers: [mapbox]}).setView([-25.299398189009363, -57.619957029819496], 13);
+        var mapboxsat = L.tileLayer('http://{s}.tiles.mapbox.com/v4/miblon.m6f0i6ib/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWlibG9uIiwiYSI6IjRJak9WYUkifQ.NOqcZh0hQeYTp6BQIZr0GQ', {
+            attribution:
+                    t('L.mapdata') +
+                    ' &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> ' +
+                    t('L.contributors') +
+                    ', <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                    t('L.imagery') + ' &copy; <a href="http://mapbox.com">Mapbox</a>',
+            maxZoom: 21
+        });
+        var baseMaps = {};
+        baseMaps[t('L.mapboxsat')] = mapboxsat;
+        baseMaps[t('L.mapboxmap')] = mapboxmap;
+        var map = L.map('map', {zoomControl: false, layers: [mapboxsat,mapboxmap]}).setView([-25.299398189009363, -57.619957029819496], 13);
+        L.control.layers(baseMaps).addTo(map);
         L.control.zoom({
             zoomInTitle: t('L.zoomInTitle'),
             zoomOutTitle: t('L.zoomOutTitle')

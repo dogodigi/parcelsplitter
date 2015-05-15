@@ -7,6 +7,8 @@
         "contributors": "deelnemers",
         "imagery": "Luchtfoto",
         "zoomInTitle": "Inzoomen",
-        "zoomOutTitle": "Uitzoomen"
+        "zoomOutTitle": "Uitzoomen",
+        "mapboxmap": "Kaart",
+        "mapboxsat": "Luchtfoto"
     }
 }

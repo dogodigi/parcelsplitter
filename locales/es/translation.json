@@ -1,12 +1,14 @@
 {
     "app": {
-        "title": "Divisor de paquetería"
+        "title": "Divisor de parcelas"
     },
     "L":{
         "mapdata": "Datos del mapa",
         "contributors": "contribuyentes",
         "imagery": "imágenes",
         "zoomInTitle": "Acercar",
-        "zoomOutTitle": "Alejar"
+        "zoomOutTitle": "Alejar",
+        "mapboxmap": "Mapa",
+        "mapboxsat": "Imágenes"
     }
 }
