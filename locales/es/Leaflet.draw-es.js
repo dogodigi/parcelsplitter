@@ -30,7 +30,7 @@ L.drawLocal = {
             },
             marker: {
                 tooltip: {
-                    start: 'Cliquez sur la carte pour placer un marcador'
+                    start: 'Haz click sobre el mapa para poner un marcador'
                 }
             },
             polygon: {
@@ -55,7 +55,7 @@ L.drawLocal = {
             },
             simpleshape: {
                 tooltip: {
-                    end: 'Relachez la souris pour finir de dessiner'
+                    end: 'Suelte el ratón para finalizar el dibujo'
                 }
             }
         }
