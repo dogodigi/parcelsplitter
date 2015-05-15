@@ -44,7 +44,7 @@ function init() {
         var baseMaps = {};
         baseMaps[t('L.mapboxsat')] = mapboxsat;
         baseMaps[t('L.mapboxmap')] = mapboxmap;
-        var map = L.map('map', {zoomControl: false, layers: [mapboxsat,mapboxmap]}).setView([-25.299398189009363, -57.619957029819496], 13);
+        var map = L.map('map', {zoomControl: false, layers: [mapboxmap]}).setView([-25.299398189009363, -57.619957029819496], 13);
         L.control.layers(baseMaps).addTo(map);
         L.control.zoom({
             zoomInTitle: t('L.zoomInTitle'),
