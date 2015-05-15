@@ -15,11 +15,11 @@ L.drawLocal = {
                 text: 'Eliminar último punto'
             },
             buttons: {
-                polyline: 'Dibuja una linea!',
-                polygon: 'Dibuja un poligono!',
-                rectangle: 'Dibuja un rectangulo!',
-                circle: 'Dibuja un circulo!',
-                marker: 'Dessiner un marqueur'
+                polyline: 'Dibuja una linea',
+                polygon: 'Dibuja un poligono',
+                rectangle: 'Dibuja un rectangulo',
+                circle: 'Dibuja un circulo',
+                marker: 'Poner marcador'
             }
         },
         handlers: {
@@ -30,7 +30,7 @@ L.drawLocal = {
             },
             marker: {
                 tooltip: {
-                    start: 'Cliquez sur la carte pour placer un marqueur.'
+                    start: 'Cliquez sur la carte pour placer un marcador'
                 }
             },
             polygon: {
@@ -55,7 +55,7 @@ L.drawLocal = {
             },
             simpleshape: {
                 tooltip: {
-                    end: 'Relachez la souris pour finir de dessiner.'
+                    end: 'Relachez la souris pour finir de dessiner'
                 }
             }
         }

@@ -5,6 +5,8 @@
     "L":{
         "mapdata": "Datos del mapa",
         "contributors": "contribuyentes",
-        "imagery": "imágenes"
+        "imagery": "imágenes",
+        "zoomInTitle": "Acercar",
+        "zoomOutTitle": "Alejar"
     }
 }
