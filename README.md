@@ -1,9 +1,10 @@
 # parcelsplitter
 
-## Tasks and issues
+## Wiki and issues
+
 [![Managed with Taiga](https://taiga.io/media/support/attachments/article-22/banner-gh.png)](https://tree.taiga.io/project/parcelsplitter "Managed with Taiga")
 
-Parcelsplitter has a [taiga](http://taiga.io) project set up to develop using use cases, track issues and to bundle team communication.
+Wiki and issue functions from github are not available. Instead, this project has a [taiga](http://taiga.io) project set up to develop using use cases, track issues and facilitate team communication.
 
 [taiga.io - parcelsplitter](https://tree.taiga.io/project/parcelsplitter/)
 
