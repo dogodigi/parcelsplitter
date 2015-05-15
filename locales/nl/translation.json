@@ -5,6 +5,8 @@
     "L":{
         "mapdata": "Kaartgegevens",
         "contributors": "deelnemers",
-        "imagery": "Luchtfoto"
+        "imagery": "Luchtfoto",
+        "zoomInTitle": "Inzoomen",
+        "zoomOutTitle": "Uitzoomen"
     }
 }

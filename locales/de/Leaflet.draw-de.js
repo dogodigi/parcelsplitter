@@ -1,6 +1,8 @@
 /*
  * Leaflet.draw assumes that you have already included the Leaflet library.
  */
+/* global L */
+
 // Translations from https://github.com/makinacorpus/django-leaflet/blob/295c408a4ad544d045816998e04bdff4c1a000b9/leaflet/locale/de/LC_MESSAGES/django.po
 
 L.drawLocal = {

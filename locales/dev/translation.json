@@ -1,6 +1,12 @@
 {
     "app": {
         "title": "app.title"
+    },
+    "L": {
+        "mapdata": "L.mapdata",
+        "contributors": "L.contributors",
+        "imagery": "L.imagery",
+        "zoomInTitle": "L.zoomInTitle",
+        "zoomOutTitle": "L.zoomOutTitle"
     }
-    
 }

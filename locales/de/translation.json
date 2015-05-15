@@ -1,6 +1,12 @@
 {
     "app": {
-        "title": "app.title"
+        "title": "Grundstückteiler"
+    },
+    "L": {
+        "mapdata": "Kartendaten",
+        "contributors": "beiträger",
+        "imagery": "Metaphorik",
+        "zoomInTitle": "Hereinsausen",
+        "zoomOutTitle": "Heraussausen"
     }
-    
 }

@@ -22,17 +22,21 @@
 
 
 function init() {
-    i18n.init({lng: psLang, detectLngQS: 'l' }, function (t) {
+    i18n.init({lng: psLang, detectLngQS: 'l'}, function (t) {
         var mapbox = L.tileLayer('http://{s}.tiles.mapbox.com/v3/miblon.map-n72dremu/{z}/{x}/{y}.png', {
-            attribution: 
-                    t('L.mapdata') + 
+            attribution:
+                    t('L.mapdata') +
                     ' &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> ' +
-                    t('L.contributors')+ 
-                    ', <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' + 
+                    t('L.contributors') +
+                    ', <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
                     t('L.imagery') + ' &copy; <a href="http://mapbox.com">Mapbox</a>',
             maxZoom: 18
         });
-        var map = L.map('map', {layers: [mapbox]}).setView([-25.299398189009363, -57.619957029819496], 13);
+        var map = L.map('map', {zoomControl: false, layers: [mapbox]}).setView([-25.299398189009363, -57.619957029819496], 13);
+        L.control.zoom({
+            zoomInTitle: t('L.zoomInTitle'),
+            zoomOutTitle: t('L.zoomOutTitle')
+        }).addTo(map);
         var drawnItems = new L.FeatureGroup();
         map.addLayer(drawnItems);
 
