@@ -1,6 +1,7 @@
 # parcelsplitter
 
 ## Tasks and issues
+[![Managed with Taiga](https://taiga.io/media/support/attachments/article-22/banner-gh.png)](https://tree.taiga.io/project/parcelsplitter "Managed with Taiga")
 
 Parcelsplitter has a [taiga](http://taiga.io) project set up to develop using use cases, track issues and to bundle team communication.
 
