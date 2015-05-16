@@ -42,6 +42,7 @@ app.set('port', 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use('/locales', express.static(__dirname + '/locales'));
+app.use('/data', express.static(__dirname + '/data'));
 app.use(express.static(path.join(__dirname, 'public')));
 i18n.registerAppHelper(app);
 i18n.serveClientScript(app)

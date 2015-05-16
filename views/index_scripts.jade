@@ -2,6 +2,7 @@
     script(type='text/javascript').
         var psLang = '#{mylang}';
     script(src='http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js', type='text/javascript')
+    script(src='js/libs/Leaflet.ajax.min.js', type='text/javascript')
     script(src='js/libs/Leaflet.draw.js', type='text/javascript')
     -if(mylang !== 'en'){
         script(src='locales/#{mylang}/Leaflet.draw-#{mylang}.js', type='text/javascript')

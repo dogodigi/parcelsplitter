@@ -50,6 +50,23 @@ function init() {
             zoomInTitle: t('L.zoomInTitle'),
             zoomOutTitle: t('L.zoomOutTitle')
         }).addTo(map);
+
+
+        function popUp(f, l) {
+            //select and copy to edit layer
+            
+            var out = [];
+            if (f.properties) {
+                for (key in f.properties) {
+                    out.push(key + ": " + f.properties[key]);
+                }
+                l.bindPopup(out.join("<br />"));
+            }
+        }
+        L.geoJson.ajax("data/manzanas.geojson", {
+            onEachFeature: popUp
+        }).addTo(map);
+
         var drawnItems = new L.FeatureGroup();
         map.addLayer(drawnItems);
 
