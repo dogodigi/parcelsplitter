@@ -20,7 +20,7 @@
  *
  */
 
-
+var wkts = [];
 function init() {
     i18n.init({lng: psLang, detectLngQS: 'l'}, function (t) {
         var mapboxmap = L.tileLayer('http://{s}.tiles.mapbox.com/v3/miblon.map-n72dremu/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWlibG9uIiwiYSI6IjRJak9WYUkifQ.NOqcZh0hQeYTp6BQIZr0GQ', {
@@ -44,19 +44,58 @@ function init() {
         var baseMaps = {};
         baseMaps[t('L.mapboxsat')] = mapboxsat;
         baseMaps[t('L.mapboxmap')] = mapboxmap;
-        var map = L.map('map', {zoomControl: false, layers: [mapboxmap]}).setView([-25.299398189009363, -57.619957029819496], 13);
+        var map = L.map('map', {zoomControl: false, layers: [mapboxmap]}).setView([-25.3, -57.647957029819496], 19);
         L.control.layers(baseMaps).addTo(map);
         L.control.zoom({
             zoomInTitle: t('L.zoomInTitle'),
             zoomOutTitle: t('L.zoomOutTitle')
         }).addTo(map);
 
+        function highlightFeature(e) {
+            var layer = e.target;
+            layer.setStyle({
+                weight: 5,
+                color: '#666',
+                dashArray: '',
+                fillOpacity: 0.7
+            });
 
+            if (!L.Browser.ie && !L.Browser.opera) {
+                layer.bringToFront();
+            }
+        }
+
+        function onEachFeature(feature, layer) {
+            layer.on({
+                mouseover: highlightFeature,
+                mouseout: resetHighlight,
+                click: clickLote
+            });
+        }
+
+        function clickLote(e) {
+            var feat = e.target;
+            if (wkts[0]) {
+                wkts[1] = feat.feature;
+                testWorkers();
+            } else {
+                wkts[0] = feat.feature;
+            }
+            feat.setStyle({
+                weight: 5,
+                color: '#ff0000',
+                fillColor: "#CC7700",
+                dashArray: '',
+                fillOpacity: 0.7
+            });
+            if (!L.Browser.ie && !L.Browser.opera) {
+                feat.bringToFront();
+            }
+        }
         function popUp(f, l) {
-            //select and copy to edit layer
-            
             var out = [];
             if (f.properties) {
+                var key;
                 for (key in f.properties) {
                     out.push(key + ": " + f.properties[key]);
                 }
@@ -66,6 +105,23 @@ function init() {
         L.geoJson.ajax("data/manzanas.geojson", {
             onEachFeature: popUp
         }).addTo(map);
+
+        var geojson;
+        geojson = L.geoJson.ajax("data/lotes-extract.geojson", {
+            style: {
+                weight: 2,
+                color: "#999",
+                opacity: 1,
+                fillColor: "#B0DE5C",
+                fillOpacity: 0.8
+            },
+            onEachFeature: onEachFeature
+        }).addTo(map);
+
+        function resetHighlight(e) {
+            // @todo don't reset when object is selected
+            geojson.resetStyle(e.target);
+        }
 
         var drawnItems = new L.FeatureGroup();
         map.addLayer(drawnItems);
@@ -113,4 +169,19 @@ function init() {
     });
 
 
+    //test worker
+    testWorkers = function () {
+        //myWorker = new Worker('workers/difference.js');
+        //myWorker.postMessage({"buffer": [], "queue": wkts});
+        //myWorker.addEventListener('message', function (e) {
+        //    console.log(e.data);
+        //}, false);
+        // Send data to our worker.
+        myWorker = new Worker('workers/touch.js');
+        myWorker.postMessage({"buffer": [], "queue": wkts});
+        wkts = [];
+        myWorker.addEventListener('message', function (e) {
+            console.log('result for touch: ' + e.data);
+        }, false);
+    };
 }
