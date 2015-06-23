@@ -27,7 +27,7 @@
  */
 function setup(app){
     app.get('/', index);
-    app.post'/print', print);
+    app.post('/print', print);
 }
 
 /**

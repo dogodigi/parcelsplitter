@@ -11,7 +11,7 @@
   "private": true,
   "scripts": {
     "start": "node index.js",
-    "test": "mocha --require test/support/env --reporter spec --bail --check-leaks test/ test/acceptance/"
+    "test": "mocha --reporter spec --bail --check-leaks test/"
   },
   "repository": {
     "type": "git",
