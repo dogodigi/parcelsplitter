@@ -22,7 +22,7 @@
 
 var wkts = [];
 function init() {
-    i18n.init({lng: psLang, detectLngQS: 'l'}, function (t) {
+    i18n.init({lng: psLang, detectLngQS: 'l'}, function (err, t) {
         var mapboxmap = L.tileLayer('http://{s}.tiles.mapbox.com/v3/miblon.map-n72dremu/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWlibG9uIiwiYSI6IjRJak9WYUkifQ.NOqcZh0hQeYTp6BQIZr0GQ', {
             attribution:
                     t('L.mapdata') +
