@@ -10,7 +10,8 @@
   },
   "private": true,
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "mocha --require test/support/env --reporter spec --bail --check-leaks test/ test/acceptance/"
   },
   "repository": {
     "type": "git",
@@ -25,5 +26,10 @@
     "jade": "~1.6.0",
     "nconf": "^0.7.1",
     "serve-favicon": "^2.2.0"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "sinon": "*",
+    "mocha": "*"
   }
 }
