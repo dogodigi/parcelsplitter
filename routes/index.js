@@ -27,7 +27,9 @@
  */
 function setup(app){
     app.get('/', index);
+    app.post'/print', print);
 }
+
 /**
  * 
  * @param {type} req
@@ -40,5 +42,43 @@ function index(req, res) {
     res.render('index', {mylang: activelang, mode: req.app.get('env')});
 }
 
+/**
+ * Generate pdf file (print). In this state, a dummy. 
+ * Will be changed to full print functionality in the future.
+ * 
+ * @param {type} req
+ * @param {type} res
+ * @returns {pdfkit.pdf}
+ */
+function print(req, res) {
+    // Create PDF
+    var doc = new pdfDocument();
+
+    // Write headers
+    res.writeHead(200, {
+        'Content-Type': 'application/pdf',
+        'Access-Control-Allow-Origin': '*',
+        'Content-Disposition': 'attachment; filename=Untitled.pdf'
+    });
+
+    // Pipe generated PDF into response
+    doc.pipe(res);
+
+    // Process image
+    request({
+        url: 'http://dummyimage.com/640.jpeg',
+        encoding: null // Prevents Request from converting response to string
+    }, function(err, response, body) {
+        if (err) throw err;
+
+        // Inject image
+        doc.image(body); // `body` is a Buffer because we told Request
+                         // to not make it a string
+
+        doc.end(); // Close document and, by extension, response
+        return;
+    });
+}
+exports.print = print;
 exports.setup = setup;
 exports.index = index;
