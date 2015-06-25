@@ -20,7 +20,7 @@
  *
  */
 
-var wkts = [];
+var geometries = [];
 function init() {
     i18n.init({lng: psLang, detectLngQS: 'l'}, function (t) {
         var mapboxmap = L.tileLayer('http://{s}.tiles.mapbox.com/v3/miblon.map-n72dremu/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWlibG9uIiwiYSI6IjRJak9WYUkifQ.NOqcZh0hQeYTp6BQIZr0GQ', {
@@ -52,17 +52,17 @@ function init() {
         }).addTo(map);
 
         function highlightFeature(e) {
-            var layer = e.target;
-            layer.setStyle({
-                weight: 5,
-                color: '#666',
-                dashArray: '',
-                fillOpacity: 0.7
-            });
+//            var layer = e.target;
+//            layer.setStyle({
+//                weight: 5,
+//                color: '#666',
+//                dashArray: '',
+//                fillOpacity: 0.7
+//            });
 
-            if (!L.Browser.ie && !L.Browser.opera) {
-                layer.bringToFront();
-            }
+//            if (!L.Browser.ie && !L.Browser.opera) {
+//                layer.bringToFront();
+//            }
         }
 
         function onEachFeature(feature, layer) {
@@ -74,22 +74,32 @@ function init() {
         }
 
         function clickLote(e) {
-            var feat = e.target;
-            if (wkts[0]) {
-                wkts[1] = feat.feature;
+            if(geometries[0] && geometries[1]){
+                geometries = [];
+            }
+            if (geometries[0] && e.target.feature !== geometries[0]) {
+                geometries[1] = e.target.feature;
+                e.target.setStyle({
+                    weight: 5,
+                    color: '#ff0000',
+                    fillColor: "#CC7700",
+                    dashArray: '',
+                    fillOpacity: 0.7
+                });
+                //geojson.resetStyle(e.target);
                 testWorkers();
             } else {
-                wkts[0] = feat.feature;
-            }
-            feat.setStyle({
-                weight: 5,
-                color: '#ff0000',
-                fillColor: "#CC7700",
-                dashArray: '',
-                fillOpacity: 0.7
-            });
-            if (!L.Browser.ie && !L.Browser.opera) {
-                feat.bringToFront();
+                geometries[0] = e.target.feature;
+                e.target.setStyle({
+                    weight: 5,
+                    color: '#ff0000',
+                    fillColor: "#CC7700",
+                    dashArray: '',
+                    fillOpacity: 0.7
+                });
+                if (!L.Browser.ie && !L.Browser.opera) {
+                    e.target.bringToFront();
+                }
             }
         }
         function popUp(f, l) {
@@ -102,9 +112,9 @@ function init() {
                 l.bindPopup(out.join("<br />"));
             }
         }
-        L.geoJson.ajax("data/manzanas.geojson", {
-            onEachFeature: popUp
-        }).addTo(map);
+//        L.geoJson.ajax("data/manzanas.geojson", {
+//            onEachFeature: popUp
+//        }).addTo(map);
 
         var geojson;
         geojson = L.geoJson.ajax("data/lotes-extract.geojson", {
@@ -120,7 +130,7 @@ function init() {
 
         function resetHighlight(e) {
             // @todo don't reset when object is selected
-            geojson.resetStyle(e.target);
+            //geojson.resetStyle(e.target);
         }
 
         var drawnItems = new L.FeatureGroup();
@@ -178,8 +188,8 @@ function init() {
         //}, false);
         // Send data to our worker.
         myWorker = new Worker('workers/touch.js');
-        myWorker.postMessage({"buffer": [], "queue": wkts});
-        wkts = [];
+        myWorker.postMessage({"buffer": [], "queue": geometries});
+        geometries = [];
         myWorker.addEventListener('message', function (e) {
             console.log('result for touch: ' + e.data);
         }, false);
