@@ -1,4 +1,4 @@
 test:
   override:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit
-    - CIRCLE_TEST_REPORTS/junit/junit.xml mocha test --reporter mocha-junit-reporter --bail --check-leaks test/
+    - $CIRCLE_TEST_REPORTS/junit/junit.xml mocha test --reporter mocha-junit-reporter --bail --check-leaks test/
