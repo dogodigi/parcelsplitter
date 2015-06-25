@@ -32,7 +32,7 @@ i18n.init({
     saveMissing: true,
     sendMissingTo : 'all',
     useCookie: false,
-    debug: true,
+    debug: false,
     fallbackLng: 'dev'
 });
 

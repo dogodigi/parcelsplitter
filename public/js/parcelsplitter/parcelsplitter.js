@@ -22,7 +22,7 @@
 
 var geometries = [];
 function init() {
-    i18n.init({lng: psLang, detectLngQS: 'l'}, function (err, t) {
+    i18n.init({lng: psLang, detectLngQS: 'l'}, function (t) {
         var mapboxmap = L.tileLayer('http://{s}.tiles.mapbox.com/v3/miblon.map-n72dremu/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWlibG9uIiwiYSI6IjRJak9WYUkifQ.NOqcZh0hQeYTp6BQIZr0GQ', {
             attribution:
                     t('L.mapdata') +
@@ -181,11 +181,6 @@ function init() {
 
     //test worker
     testWorkers = function () {
-        //myWorker = new Worker('workers/difference.js');
-        //myWorker.postMessage({"buffer": [], "queue": wkts});
-        //myWorker.addEventListener('message', function (e) {
-        //    console.log(e.data);
-        //}, false);
         // Send data to our worker.
         myWorker = new Worker('workers/touch.js');
         myWorker.postMessage({"buffer": [], "queue": geometries});
