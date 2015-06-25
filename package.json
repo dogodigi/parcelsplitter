@@ -29,9 +29,7 @@
     "serve-favicon": "^2.2.0"
   },
   "devDependencies": {
-    "chai": "*",
     "mocha": "*",
-    "sinon": "*",
     "supertest": "^1.0.1"
   }
 }
