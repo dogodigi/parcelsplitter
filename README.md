@@ -3,6 +3,7 @@
 ## Wiki and issues
 
 [![Managed with Taiga](https://taiga.io/media/support/attachments/article-22/banner-gh.png)](https://tree.taiga.io/project/parcelsplitter "Managed with Taiga")
+[![Circle CI](https://circleci.com/gh/dogodigi/parcelsplitter.svg?style=svg)](https://circleci.com/gh/dogodigi/parcelsplitter)
 
 Wiki and issue functions from github are not available. Instead, this project has a [taiga](http://taiga.io) project set up to develop using use cases, track issues and facilitate team communication.
 
