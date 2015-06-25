@@ -11,7 +11,7 @@
   "private": true,
   "scripts": {
     "start": "node index.js",
-    "test": "$CIRCLE_TEST_REPORTS/junit/junit.xml mocha test --reporter mocha-junit-reporter --bail --check-leaks test/"
+    "test": "mocha test --reporter dot --bail --check-leaks test/"
   },
   "repository": {
     "type": "git",
