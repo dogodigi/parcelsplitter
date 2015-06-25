@@ -10,7 +10,8 @@
   },
   "private": true,
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "mocha --reporter spec --bail --check-leaks test/"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,13 @@
     "i18next": "^1.7.8",
     "jade": "~1.6.0",
     "nconf": "^0.7.1",
+    "pdfkit": "^0.7.1",
     "serve-favicon": "^2.2.0"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*",
+    "sinon": "*",
+    "supertest": "^1.0.1"
   }
 }
