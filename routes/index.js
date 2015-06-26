@@ -50,39 +50,29 @@ function index(req, res) {
  * 
  * @param {type} req
  * @param {type} res
- * @returns {pdfkit.pdf}
+ * @returns {application/pdf}
  */
-function print(req, res) {
-
-    var PDFDocument = require('pdfkit');
-    // Create PDF
-    var doc = new PDFDocument();
-    // doc.pipe(fs.createWriteStream('print.pdf'));
-    doc.pipe(res);
-    // Write headers
+function print(req, res){
+    var toner = require("toner")();
+    toner.engine("jsrender", require("toner-jsrender"));
+    toner.recipe("wkhtmltopdf", require("toner-wkhtmltopdf")());
+    toner.render({
+        template: { 
+            engine: "jsrender",
+            recipe: "wkhtmltopdf", 
+            content: "<h1>{{:foo}}</h1>"
+        },
+        data: { foo: "hello world"}
+    }, function(err, out) {
+        out.stream.pipe(res);
+    });
+    // If we ommit the header, the pdf is opened in the browser,
+    // If headers are set, it is offered as download.
     res.writeHead(200, {
         'Content-Type': 'application/pdf',
         'Access-Control-Allow-Origin': '*',
         'Content-Disposition': 'attachment; filename=print.pdf'
     });
-    doc.font('assets/fonts/rm_typerighter_medium.ttf')
-      .fontSize(25)
-      .text('This is my Title', 100, 100)
-      .moveDown(0.5)
-      .fontSize(18)
-      .text('A subtitle in smaller font')
-      .moveDown(10);
-
-    var lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in suscipit purus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus nec hendrerit felis. Morbi aliquam facilisis risus eu lacinia. Sed eu leo in turpis fringilla hendrerit. Ut nec accumsan nisl. Suspendisse rhoncus nisl posuere tortor tempus et dapibus elit porta. Cras leo neque, elementum a rhoncus ut, vestibulum non nibh. Phasellus pretium justo turpis. Etiam vulputate, odio vitae tincidunt ultricies, eros odio dapibus nisi, ut tincidunt lacus arcu eu elit. Aenean velit erat, vehicula eget lacinia ut, dignissim non tellus. Aliquam nec lacus mi, sed vestibulum nunc. Suspendisse potenti. Curabitur vitae sem turpis. Vestibulum sed neque eget dolor dapibus porttitor at sit amet sem. Fusce a turpis lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;'   
-    doc.text(lorem,{
-      columns: 3,
-      columnGap: 15,
-      height: 100,
-      width: 465,
-      align: 'justify'});
-
-    // Pipe generated PDF into response
-    doc.end(); // Close document and, by extension, response
 }
 
 /**
