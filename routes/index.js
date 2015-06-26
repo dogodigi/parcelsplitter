@@ -62,17 +62,22 @@ function print(req, res){
             recipe: "wkhtmltopdf", 
             content: "<h1>{{:foo}}</h1>"
         },
-        data: { foo: "hello world"}
+        data: {foo: "hello world"}
     }, function(err, out) {
-        out.stream.pipe(res);
+        if(err){
+            res.status(400).send(err);
+        } else {
+            // If we ommit the header, the pdf is opened in the browser,
+            // If headers are set, it is offered as download.
+            res.writeHead(200, {
+                'Content-Type': 'application/pdf',
+                'Access-Control-Allow-Origin': '*',
+                'Content-Disposition': 'attachment; filename=print.pdf'
+            });
+            out.stream.pipe(res);
+        }
     });
-    // If we ommit the header, the pdf is opened in the browser,
-    // If headers are set, it is offered as download.
-    res.writeHead(200, {
-        'Content-Type': 'application/pdf',
-        'Access-Control-Allow-Origin': '*',
-        'Content-Disposition': 'attachment; filename=print.pdf'
-    });
+    
 }
 
 /**
