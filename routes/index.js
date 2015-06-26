@@ -65,7 +65,8 @@ function print(req, res){
         data: {foo: "hello world"}
     }, function(err, out) {
         if(err){
-            res.status(400).send(err);
+            //res.status(400).send(err);
+            throw err;
         } else {
             // If we ommit the header, the pdf is opened in the browser,
             // If headers are set, it is offered as download.
