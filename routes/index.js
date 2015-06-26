@@ -55,11 +55,11 @@ function index(req, res) {
 function print(req, res){
     var toner = require("toner")();
     toner.engine("jsrender", require("toner-jsrender"));
-    toner.recipe("wkhtmltopdf", require("toner-wkhtmltopdf")());
+    toner.recipe("phantom", require("toner-phantom")());
     toner.render({
         template: { 
             engine: "jsrender",
-            recipe: "wkhtmltopdf", 
+            recipe: "phantom", 
             content: "<h1>{{:foo}}</h1>"
         },
         data: {foo: "hello world"}

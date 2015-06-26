@@ -28,7 +28,7 @@
     "serve-favicon": "^2.2.0",
     "toner": "^0.1.2",
     "toner-jsrender": "^0.1.0",
-    "toner-wkhtmltopdf": "^0.1.1"
+    "toner-phantom": "^0.1.0"
   },
   "devDependencies": {
     "mocha": "*",
