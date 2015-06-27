@@ -2,7 +2,7 @@ deployment:
   staging:
     branch: master
     heroku:
-      appname: young-woodland-2376
+      appname: pure-temple-7868
 test:
   override:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit
