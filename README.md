@@ -11,8 +11,8 @@ Wiki and issue functions from github are not available. Instead, this project ha
 
 ## Installation
 
-This application requires [node.js](https://nodejs.org/download/). 
-Once node.js is installed, checkout this project.
+This application requires [node.js](https://nodejs.org/download/) and [npm](https://www.npmjs.com/) which is either installed with node or can be 
+installed seperatly depending on the operating system. Once node.js and npm are installed, you can check the project out from github.
 
 ```sh
 git clone https://github.com/dogodigi/parcelsplitter.git
@@ -24,15 +24,17 @@ Then install the required dependencies
 npm install
 ```
 
+And wait for the node dependencies to install
+
+## Test
+
+```sh
+npm test
+```
+
 ## Run
 
 To start the applicatie in "development mode":
-
-```sh
-node index.js
-```
-
-or
 
 ```sh
 npm start
