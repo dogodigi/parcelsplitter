@@ -1,5 +1,7 @@
 # parcelsplitter
 
+Demo at [heroku](http://pure-temple-7868.herokuapp.com/)
+
 ## Wiki and issues
 
 [![Managed with Taiga](https://taiga.io/media/support/attachments/article-22/banner-gh.png)](https://tree.taiga.io/project/parcelsplitter "Managed with Taiga")
