@@ -38,7 +38,7 @@ i18n.init({
 
 var app = express();
 app.use(i18n.handle);
-app.set('port', 3000);
+app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use('/locales', express.static(__dirname + '/locales'));
