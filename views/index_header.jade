@@ -12,15 +12,10 @@ html(lang=mylang)
     title= t('app.title')
     -if(mode === 'development'){
       link(rel='stylesheet' href='css/parcelsplitter.css', type='text/css', media='screen')
-      link(rel='stylesheet' href='http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css', type='text/css', media='screen')
+      link(rel='stylesheet' href='css/leaflet.css', type='text/css', media='screen')
       link(rel='stylesheet' href='css/leaflet.draw.css', type='text/css', media='screen')
     -} else {
-      
+
     -}
   body(onload='init()')
     block content
-
-
- 
-
-
